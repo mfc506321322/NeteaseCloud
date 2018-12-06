@@ -1,0 +1,39 @@
+$baseline-px:37.5px;
+@function rem($px-values) {
+    $baseline-rem: $baseline-px / 1rem * 1;
+    $px-values: $px-values / $baseline-rem;
+    @return $px-values;
+}
+.lyric{
+    font-size: rem(16px);
+    // margin-top: rem(40px);
+    color: #fff;
+    :global(.slider-frame){
+        padding: rem(66px) 0 !important;
+        li{
+            height: rem(33px) !important;
+            line-height: rem(33px) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            p{
+                &.active{
+                    font-size: rem(22px) !important;
+                    position: relative;
+                    &::before{
+                        content: "";
+                        background: red;
+                        position: absolute;
+                        top: 50%;
+                        left: rem(-160px);
+                        width: rem(150px);
+                        height: 2px;
+                        margin-top: -1px;
+                    }
+                }
+            }
+        }
+    }
+}
+

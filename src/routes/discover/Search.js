@@ -26,7 +26,7 @@ import {connect} from 'dva';
         }
     }
 )
-class Search extends Component { //测试
+class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {

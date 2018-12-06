@@ -3,7 +3,8 @@ import {
   getMusicDetail,
   getSong,
   playDetailAll,
-  playSongsAll
+  playSongsAll,
+  getLyric
 } from '../services/index';
 export default {
   namespace: "play",
@@ -18,10 +19,15 @@ export default {
     *getMusicDetail(action, {call, put}){
       console.log('action...', action);
       let response = yield call(getMusicDetail,action.id);
-      // console.log('response...', response.data.songs[0]);
+      let res = yield call(getLyric,action.id)
+      // console.log('res...', res.data.lrc.lyric);
       yield put({
         type: 'getMusicDetailData',
         payload: response.data.songs[0]
+      });
+      yield put({
+        type: 'getLyric',
+        payload: res.data.lrc.lyric
       });
     },
     *getSong(action, {call, put}){
@@ -34,7 +40,7 @@ export default {
       });
     },
     *playAll(action, {call, put}){
-      console.log('action...', action);
+      // console.log('action...', action);
       let response = yield call(playDetailAll,action.payload);
       let res = yield call(playSongsAll,action.payload);
       // console.log('response.AllSong...', response.data.songs);
@@ -68,7 +74,6 @@ export default {
         if(newState.current > newState.songsDetailAll.length-1){
           return state;
         }
-        
       }else{
         newState.current--;
         if(newState.current < 0){
@@ -92,6 +97,9 @@ export default {
       newState.musicDetailData = newState.songsDetailAll.filter(item => item.id === action.payload)[0];
       newState.songUrl = newState.songsUrlAll.filter(item => item.id === action.payload)[0].url;
       return newState;
+    },
+    getLyric(state,action){
+      return {...state, lyric:action.payload}
     }
   }
 };

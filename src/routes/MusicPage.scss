@@ -4,68 +4,6 @@ $baseline-px:37.5px;
     $px-values: $px-values / $baseline-rem;
     @return $px-values;
 }
-.musicDown{
-    height: 100%;
-    width: 100%;
-    background: rgba(255,255,255,.85);
-    position: fixed;
-    bottom:-100%;
-    left: 0;
-    z-index: 99;
-    display: flex;
-    flex-direction: column;
-    transition: all .3s linear;
-    .listHeader{
-        height: rem(50px);
-        background: #363B3D;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 rem(20px);
-        img{
-            width: auto;
-            height: rem(25px);
-            display: block;
-        }
-        h4{
-            font-size: rem(17px);
-            color: #fff;
-        }
-        .basis{
-            flex-basis: rem(25px);
-        }
-    }
-    .content{
-        padding: rem(6px);
-        flex: 1;
-        overflow-y: auto;
-        .ul{
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            .li{
-                width: 100%;
-                border-bottom:1px solid #ddd;
-                .musicBox{
-                    width: 100%;
-                    height: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    padding: rem(12px) 0;
-                    h3{
-                        font-size: rem(16px);
-                        font-weight: bold;
-                        margin-bottom: rem(2px);
-                        color: #333;
-                    }
-                    span{
-                        color: #999;
-                    }
-                }
-            }
-        }
-    }
-}
 .musicList{
     height: 100%;
     width: 100%;
@@ -129,6 +67,11 @@ $baseline-px:37.5px;
     }
 }
 
+.musicDown{
+    composes: musicList;
+    bottom:-100%;
+}
+
 .musicPage{
     height: 100%;
     width: 100%;
@@ -163,6 +106,7 @@ $baseline-px:37.5px;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     .img{
         width: rem(200px);
         height: rem(200px);

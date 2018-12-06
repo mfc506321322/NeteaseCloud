@@ -37,3 +37,8 @@ export function playSongsAll(arr){
   let ids = arr.join(',');
   return request(`${host}/song/url?id=${ids}`)
 }
+
+//获取歌词
+export function getLyric(id){
+  return request(`${host}/lyric?id=${id}`)
+}

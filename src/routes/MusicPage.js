@@ -2,19 +2,24 @@ import React, { Component } from 'react';
 import {connect} from 'dva';
 import styles from './MusicPage.scss';
 import {formatTime} from '../utils/time';
+import Lyric from '../components/lyric';
+/* let storage = window.localStorage;
+let musicListHistory = []; */
 @connect(
     state => {
         let {
             musicDetailData,
             songUrl,
-            songsDetailAll
+            songsDetailAll,
+            lyric
         } = state.play;
         // console.log('musicDetailData...',musicDetailData);
         // console.log('songsDetailAll...',songsDetailAll);
         return {
             musicDetailData,
             songUrl,
-            songsDetailAll
+            songsDetailAll,
+            lyric
         }
     },
     dispatch => {
@@ -60,6 +65,14 @@ class MusicPage extends Component {
         console.log('match.params.id...',this.props.match.params.id);
         this.props.getSong(this.props.match.params.id);
     }
+    /* shouldComponentUpdate(){
+        let flag = musicListHistory.some(v => {
+            return v.id === this.props.musicDetailData.id;
+        })
+        !flag && Object.keys(this.props.musicDetailData).length>0 && musicListHistory.push(this.props.musicDetailData);
+
+        return true;
+    } */
     timeUpdate = () => {
         let progress = this.getTime.currentTime/this.getTime.duration*100;
         // console.log(progress);
@@ -151,7 +164,8 @@ class MusicPage extends Component {
         } = this.state;
         let {
             musicDetailData,
-            songsDetailAll
+            songsDetailAll,
+            lyric
         } = this.props;
         let v = {...musicDetailData};
         return (
@@ -206,6 +220,7 @@ class MusicPage extends Component {
                                     className={isPlay ? '' : styles.pause}
                                     alt=""/>
                                 </div>
+                                <Lyric lyric={lyric} currentTime={this.getTime && this.getTime.currentTime}></Lyric>
                             </div>
                             <div className={styles.footer}>
                                 <div className={styles.time}>
