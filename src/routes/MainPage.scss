@@ -1,0 +1,33 @@
+// @import './common.scss';
+$baseline-px:37.5px;
+@function rem($px-values) {
+    $baseline-rem: $baseline-px / 1rem * 1;
+    $px-values: $px-values / $baseline-rem;
+    @return $px-values;
+}
+.main{
+    flex:1;
+    overflow: hidden;
+}
+footer{
+    width: 100%;
+    height: rem(50px);
+    background: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    a{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        img{
+            width: rem(25px);
+            height: auto;
+        }
+        span{
+            color: #363B3D;
+        }
+    }
+}
