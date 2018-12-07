@@ -13,17 +13,19 @@ class Lyric extends Component {
     }
     initLryic(lyrics){
         lyrics = lyrics.split('\n');
+        // console.log('yuanlyrics...', lyrics);
         lyrics = lyrics.filter(item=>item);
         lyrics = lyrics.map((item,index) => {
             let arr = item.split(']');
             if(!arr[1] && index < lyrics.length-2){
-                for (let i=index+1,len=index+3; i<len; i++){
+                /* for (let i=index+1,len=index+3; i<len; i++){
                     let temp = lyrics[i].split(']');
                     if (temp[1]){
                         arr[1] = temp[1];
                         break;
                     }
-                }
+                } */
+                arr[1] = '（音乐间幕）';
                 return arr.join(']');
             }else{
                 return item;
@@ -47,7 +49,7 @@ class Lyric extends Component {
             times,
             texts
         })
-        console.log('times...', times, texts);
+        // console.log('times...', times, texts);
     }
     componentWillReceiveProps(nextProps, nextState){
         if (nextProps.lyric != this.props.lyric){

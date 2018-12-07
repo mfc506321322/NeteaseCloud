@@ -3,8 +3,7 @@ import {connect} from 'dva';
 import styles from './MusicPage.scss';
 import {formatTime} from '../utils/time';
 import Lyric from '../components/lyric';
-/* let storage = window.localStorage;
-let musicListHistory = []; */
+let storage = window.localStorage;
 @connect(
     state => {
         let {
@@ -47,6 +46,12 @@ let musicListHistory = []; */
                     type:'play/musicListChange',
                     payload
                 })
+            },
+            getLyrics:(payload) => {
+                dispatch({
+                    type:'play/getLyrics',
+                    payload
+                })
             }
         }
     }
@@ -65,6 +70,11 @@ class MusicPage extends Component {
         console.log('match.params.id...',this.props.match.params.id);
         this.props.getSong(this.props.match.params.id);
     }
+    componentWillReceiveProps(nextProps){
+        if(nextProps.musicDetailData.id !== this.props.musicDetailData.id){
+            nextProps.musicDetailData.id && this.props.getLyrics(nextProps.musicDetailData.id);
+        }
+    }
     /* shouldComponentUpdate(){
         let flag = musicListHistory.some(v => {
             return v.id === this.props.musicDetailData.id;
@@ -80,7 +90,10 @@ class MusicPage extends Component {
             progress
         },() => {
             if(progress == 100){
-                this.switchPlay('next');
+                let songsDetailAll = JSON.parse(storage.getItem('songsDetailAll')) || this.props.songsDetailAll;
+                songsDetailAll ? this.switchPlay('next') : this.setState({
+                    isPlay:false
+                });
             }
         })
     }
@@ -146,10 +159,11 @@ class MusicPage extends Component {
     }
 
     switchPlay = (type) => {
-        let {
-            songsDetailAll
-        } = this.props
-        songsDetailAll.length > 0 && this.setState({
+        let songsDetailAll = JSON.parse(storage.getItem('songsDetailAll')) || this.props.songsDetailAll;
+        let flag = songsDetailAll.some(item => {
+            return item.id === this.props.musicDetailData.id;
+        })
+        flag && songsDetailAll.length > 0 && this.setState({
             isPlay:true
         },() => {
             this.props.getSwitchPlay(type);
@@ -164,10 +178,11 @@ class MusicPage extends Component {
         } = this.state;
         let {
             musicDetailData,
-            songsDetailAll,
             lyric
         } = this.props;
         let v = {...musicDetailData};
+        // console.log('v...',v);
+        let songsDetailAll = JSON.parse(storage.getItem('songsDetailAll')) || this.props.songsDetailAll;
         return (
             <React.Fragment>
                 <div className={ show ? styles.musicList : styles.musicDown}>
@@ -203,9 +218,13 @@ class MusicPage extends Component {
                     </div>
                 </div>
 
-                <div className={styles.musicPage}>
-                    {
-                        Object.keys(v).length>0 && <React.Fragment>
+                {
+                Object.keys(v).length>0 &&<div className={styles.musicPage}
+                style={{
+                    backgroundImage:`url(${v.al.picUrl})`,
+                    backgroundPosition:'center center',
+                    backgroundSize:'cover'
+                }}>
                             <header className={styles.header}>
                                 <a href="javascript:history.back();">
                                     <img src="/img/icon/back.png" alt=""/>
@@ -269,14 +288,13 @@ class MusicPage extends Component {
                                     />
                                 </div>
                             </div>
-                        </React.Fragment>
-                    }
                     {this.props.songUrl?<audio 
                     src={this.props.songUrl} 
                     autoPlay
                     ref={ref => this.getTime = ref} 
                     onTimeUpdate={this.timeUpdate}></audio>:null}
                 </div>
+                }
             </React.Fragment>
         );
     }

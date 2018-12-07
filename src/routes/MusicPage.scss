@@ -75,13 +75,12 @@ $baseline-px:37.5px;
 .musicPage{
     height: 100%;
     width: 100%;
-    background: #aaa;
     display: flex;
     flex-direction: column;
 }
 .header{
     height: rem(50px);
-    background: #363B3D;
+    background: rgba(0,0,0,.7);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -107,6 +106,7 @@ $baseline-px:37.5px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background: rgba(0,0,0,.5);
     .img{
         width: rem(200px);
         height: rem(200px);
@@ -127,7 +127,7 @@ $baseline-px:37.5px;
 }
 .footer{
     width: 100%;
-    background: #363B3D;
+    background: rgba(0,0,0,.7);
     .time{
         width: 100%;
         display: flex;
