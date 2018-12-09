@@ -72,8 +72,9 @@ export default {
   },
   reducers: {
     getMusicDetailData(state, action){
+      let newState = {...state}
       let songsDetailAll = JSON.parse(storage.getItem('songsDetailAll'));
-      let current = 0;
+      let current = newState.current;
       if(songsDetailAll){
         songsDetailAll.map((v,i) => {
           if(action.payload.id === v.id){

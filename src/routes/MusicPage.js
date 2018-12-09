@@ -187,14 +187,14 @@ class MusicPage extends Component {
             <React.Fragment>
                 <div className={ show ? styles.musicList : styles.musicDown}>
                     <header className={styles.listHeader}>
-                        <img src="/img/icon/back.png" alt=""
+                        <div className={styles.basis}></div>
+                        <h4>歌单</h4>
+                        <img src="/img/icon/shut.png" alt=""
                         onClick={() => {
                             this.setState({
                                 show:false
                             })
                         }}/>
-                        <h4>歌单</h4>
-                        <div className={styles.basis}></div>
                     </header>
                     <div className={styles.content}>
                         <div className={styles.ul}>
@@ -219,75 +219,80 @@ class MusicPage extends Component {
                 </div>
 
                 {
-                Object.keys(v).length>0 &&<div className={styles.musicPage}
-                style={{
-                    backgroundImage:`url(${v.al.picUrl})`,
-                    backgroundPosition:'center center',
-                    backgroundSize:'cover'
-                }}>
-                            <header className={styles.header}>
-                                <a href="javascript:history.back();">
-                                    <img src="/img/icon/back.png" alt=""/>
-                                </a>
-                                <h4>{v.name}</h4>
-                                <div className={styles.basis}></div>
-                            </header>
-                            <div className={styles.main}>
+                Object.keys(v).length>0 &&<div className={styles.musicPage}>
+                        <div className={styles.fuzzy} style={{
+                            backgroundImage:`url(${v.al.picUrl})`,
+                            backgroundPosition:'center center',
+                            backgroundSize:'cover',
+                            filter: 'blur(10px)'
+                        }}></div>
+                        <header className={styles.header}>
+                            <a href="javascript:history.back();">
+                                <img src="/img/icon/back.png" alt=""/>
+                            </a>
+                            <h4>{v.name}</h4>
+                            <div className={styles.basis}></div>
+                        </header>
+                        <div className={styles.main}>
+                            <div className={styles.arc}>
                                 <div className={styles.img}>
-                                    <img 
-                                    src={v.al.picUrl} 
-                                    className={isPlay ? '' : styles.pause}
-                                    alt=""/>
-                                </div>
-                                <Lyric lyric={lyric} currentTime={this.getTime && this.getTime.currentTime}></Lyric>
-                            </div>
-                            <div className={styles.footer}>
-                                <div className={styles.time}>
-                                    <span className={styles.nowTime}>{this.nowTime}</span>
-                                    <div className={styles.progressTime}
-                                    onTouchStart={this.touchStart}
-                                    onTouchMove={this.touchMove}
-                                    onTouchEnd={this.touchEnd}
-                                    ref={ref => this.getProgress = ref}
-                                    >
-                                        <div className={styles.progressBox}>
-                                            <span style={{
-                                                width:`${progress}%`
-                                            }}></span>
-                                        </div>
+                                    <div className={styles.disc}>
+                                        <img 
+                                        src={v.al.picUrl} 
+                                        className={isPlay ? '' : styles.pause}
+                                        alt=""/>
                                     </div>
-                                    <span className={styles.allTime}>{this.allTime}</span>
-                                </div>
-                                <div className={styles.musicBtn}>
-                                    <div className={styles.basis}></div>
-                                    <img 
-                                    src="/img/icon/go_back.png" 
-                                    alt=""
-                                    onClick={() => {
-                                        this.switchPlay('prev')
-                                    }}/>
-                                    <img 
-                                    src={isPlay ? "/img/icon/pause.png" : "/img/icon/play.png"} 
-                                    className={styles.play} 
-                                    alt=""
-                                    onClick={this.changePlay}/>
-                                    <img 
-                                    src="/img/icon/go.png" 
-                                    alt=""
-                                    onClick={() => {
-                                        this.switchPlay('next')
-                                    }}/>
-                                    <img 
-                                    src="/img/icon/musicList.png" 
-                                    alt=""
-                                    onClick={() => {
-                                        this.setState({
-                                            show:true
-                                        })
-                                    }}
-                                    />
                                 </div>
                             </div>
+                            <Lyric lyric={lyric} currentTime={this.getTime && this.getTime.currentTime}></Lyric>
+                        </div>
+                        <div className={styles.footer}>
+                            <div className={styles.time}>
+                                <span className={styles.nowTime}>{this.nowTime}</span>
+                                <div className={styles.progressTime}
+                                onTouchStart={this.touchStart}
+                                onTouchMove={this.touchMove}
+                                onTouchEnd={this.touchEnd}
+                                ref={ref => this.getProgress = ref}
+                                >
+                                    <div className={styles.progressBox}>
+                                        <span style={{
+                                            width:`${progress}%`
+                                        }}></span>
+                                    </div>
+                                </div>
+                                <span className={styles.allTime}>{this.allTime}</span>
+                            </div>
+                            <div className={styles.musicBtn}>
+                                <div className={styles.basis}></div>
+                                <img 
+                                src="/img/icon/go_back.png" 
+                                alt=""
+                                onClick={() => {
+                                    this.switchPlay('prev')
+                                }}/>
+                                <img 
+                                src={isPlay ? "/img/icon/pause.png" : "/img/icon/play.png"} 
+                                className={styles.play} 
+                                alt=""
+                                onClick={this.changePlay}/>
+                                <img 
+                                src="/img/icon/go.png" 
+                                alt=""
+                                onClick={() => {
+                                    this.switchPlay('next')
+                                }}/>
+                                <img 
+                                src="/img/icon/musicList.png" 
+                                alt=""
+                                onClick={() => {
+                                    this.setState({
+                                        show:true
+                                    })
+                                }}
+                                />
+                            </div>
+                        </div>
                     {this.props.songUrl?<audio 
                     src={this.props.songUrl} 
                     autoPlay

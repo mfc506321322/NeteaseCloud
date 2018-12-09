@@ -8,30 +8,43 @@ class Lyric extends Component {
         this.state = {
             times:[],
             texts:[],
-            current: 0
+            current: 0,
+            count:0
         }
     }
     initLryic(lyrics){
+        let addArr = [];
         lyrics = lyrics.split('\n');
-        // console.log('yuanlyrics...', lyrics);
+        console.log('yuanlyrics...', lyrics);
         lyrics = lyrics.filter(item=>item);
         lyrics = lyrics.map((item,index) => {
             let arr = item.split(']');
             if(!arr[1] && index < lyrics.length-2){
-                /* for (let i=index+1,len=index+3; i<len; i++){
+                for (let i=index+1,len=index+3; i<len; i++){
                     let temp = lyrics[i].split(']');
                     if (temp[1]){
                         arr[1] = temp[1];
                         break;
                     }
-                } */
-                arr[1] = '（音乐间幕）';
+                }
+                // arr[1] = '（音乐间幕）';
                 return arr.join(']');
+            }else if(arr[2] && arr[2].indexOf('[') === -1 && arr[1].indexOf('[') > -1){
+                if(this.state.count == 0)this.state.count = index; 
+                let newArr = [];
+                newArr.push(arr[0]);
+                newArr.push(arr[2]);
+                addArr.push([arr[1],arr[2]].join(']'));
+                return newArr.join(']');
             }else{
                 return item;
             }
         })
-        // console.log('lyrics...', lyrics);
+        addArr.reverse();
+        addArr.length > 0 && addArr.forEach(item => {
+            lyrics.splice(this.state.count,0,item);
+        })
+        console.log(lyrics)
         this.formatLryic(lyrics);
     }
     formatLryic(lyrics){

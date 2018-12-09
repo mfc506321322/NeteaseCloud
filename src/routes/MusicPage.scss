@@ -5,7 +5,9 @@ $baseline-px:37.5px;
     @return $px-values;
 }
 .musicList{
-    height: 100%;
+    border-radius: 15px 15px 0 0;
+    overflow: hidden;
+    height: 65%;
     width: 100%;
     background: rgba(255,255,255,.85);
     position: fixed;
@@ -17,7 +19,7 @@ $baseline-px:37.5px;
     transition: all .3s linear;
     .listHeader{
         height: rem(50px);
-        background: #363B3D;
+        // background: #363B3D;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -29,7 +31,7 @@ $baseline-px:37.5px;
         }
         h4{
             font-size: rem(17px);
-            color: #fff;
+            color: rgb(54,59,61);
         }
         .basis{
             flex-basis: rem(25px);
@@ -77,14 +79,25 @@ $baseline-px:37.5px;
     width: 100%;
     display: flex;
     flex-direction: column;
+    .fuzzy{
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        filter: blur(10px);
+        width: 100%;
+        height: 100%;
+    }
 }
 .header{
     height: rem(50px);
-    background: rgba(0,0,0,.7);
+    background: rgba(0,0,0,.3);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 rem(20px);
+    position: relative;
+    z-index: 3;
     a{
         img{
             width: auto;
@@ -101,33 +114,57 @@ $baseline-px:37.5px;
     }
 }
 .main{
+    position: relative;
+    z-index: 3;
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: rgba(0,0,0,.5);
-    .img{
-        width: rem(200px);
-        height: rem(200px);
+    background: rgba(0,0,0,.2);
+    .arc{
+        width: rem(295px);
+        height: rem(295px);
         border-radius: 50%;
         overflow: hidden;
         display: flex;
         justify-content: center;
         align-items: center;
-        img{
-            width: auto;
-            height: 100%;
-            animation: rotate 15s linear infinite;
-            &.pause{
-                animation-play-state: paused;
+        background: rgba(255,255,255,.1);
+        .img{
+            width: rem(280px);
+            height: rem(280px);
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #1A1A1A;
+            .disc{
+                width: rem(200px);
+                height: rem(200px);
+                border-radius: 50%;
+                overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img{
+                    width: auto;
+                    height: 100%;
+                    animation: rotate 15s linear infinite;
+                    &.pause{
+                        animation-play-state: paused;
+                    }
+                }
             }
         }
     }
 }
 .footer{
+    position: relative;
+    z-index: 3;
     width: 100%;
-    background: rgba(0,0,0,.7);
+    background: rgba(0,0,0,.3);
     .time{
         width: 100%;
         display: flex;
