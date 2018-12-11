@@ -108,6 +108,7 @@ $baseline-px:37.5px;
     h4{
         font-size: rem(17px);
         color: #fff;
+        text-align: center;
     }
     .basis{
         flex-basis: rem(25px);
@@ -234,7 +235,9 @@ $baseline-px:37.5px;
         align-items: center;
         margin-bottom: rem(25px);
         .basis{
-            flex-basis: rem(48px);
+            // flex-basis: rem(48px);
+            width: rem(26px);
+            margin: 0 rem(22px); 
         }
         img{
             width: rem(26px);

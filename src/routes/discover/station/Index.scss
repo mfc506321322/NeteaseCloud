@@ -1,0 +1,117 @@
+$baseline-px:37.5px;
+@function rem($px-values) {
+    $baseline-rem: $baseline-px / 1rem * 1;
+    $px-values: $px-values / $baseline-rem;
+    @return $px-values;
+}
+.recommend{
+    width: 100%;
+}
+.header{
+    height: rem(100px);
+    background: #363B3D;
+    :global(.am-wingblank-lg){
+        margin-left: rem(6px);
+        margin-right: rem(6px);
+    }
+}
+.menu{
+    display: flex;
+    padding: rem(50px) 0 rem(20px) 0;
+    border-bottom: 1px solid #ddd;
+    a{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .imgbox{
+            width: rem(50px);
+            height: rem(50px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background: #363B3D;
+            img{
+                width: rem(26px);
+                height: rem(26px);
+            }
+        }
+        span{
+            color: #363B3D;
+            margin-top: rem(3px);
+        }
+    }
+}
+.vip{
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+    padding: rem(15px) rem(5px);
+    background: rgba(54,59,61,.8);
+    h4{
+        width: 100%;
+        text-align: center;
+        font-size: rem(16px);
+        font-weight: bold;
+        margin-bottom: rem(15px);
+        color: #fff;
+    }
+    .spaceCarousel{
+        width: 100%;
+        overflow-x: auto;
+        .vipbox{
+            display: flex;
+            .vipli{
+                border-radius: rem(4px);
+                overflow: hidden;
+                flex-shrink: 0;
+                background: #fff;
+                margin: 0 rem(2px);
+                width: rem(120px);
+                display: flex;
+                flex-direction: column;
+                img{
+                    flex-shrink: 0;
+                    width: 100%;
+                    height: auto;
+                }
+                .text{
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    padding: rem(5px) 0;
+                    span{
+                        font-size: rem(13px);
+                        width: 100%;
+                        padding: 0 rem(5px);
+                        margin-bottom: rem(5px);
+                        font-weight: bold;
+                        overflow:hidden; 
+                        text-overflow:ellipsis;
+                        display:-webkit-box;
+                        /* autoprefixer: off */
+                        -webkit-box-orient:vertical;
+                        /* autoprefixer: on */
+                        -webkit-line-clamp:2;
+                    }
+                }
+            }
+        }
+    }
+    .vipBtn{
+        width: 100%;
+        text-align: center;
+        margin-top: rem(10px);
+        button{
+            padding: rem(4px) rem(10px);
+            border: 1px solid #fff;
+            color: #fff;
+            font-weight: bold;
+            border-radius: rem(11px);
+            overflow: hidden;
+            background: rgba(0,0,0,0);
+        }
+    }
+}

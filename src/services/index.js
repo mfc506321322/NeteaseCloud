@@ -1,11 +1,17 @@
 import request from '../utils/request';
 export * from './discover.js';
+export * from './station.js';
 
 const host = /localhost/.test(window.location.host)?'http://123.206.55.50:14000':'';
 // 登陆接口
 export function login(user,pwd){
   console.log(user,pwd);
   return request(`${host}/login/cellphone?phone=${user}&password=${pwd}`)
+}
+
+// 获取用户信息
+export function getUserInfo(id){
+  return request(`${host}/user/detail?uid=${id}`)
 }
 
 //搜索接口

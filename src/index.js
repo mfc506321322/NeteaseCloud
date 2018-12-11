@@ -16,6 +16,7 @@ const app = dva();
 app.model(require('./models/index').default);
 app.model(require('./models/discover/recommend').default);
 app.model(require('./models/play').default);
+app.model(require('./models/discover/station').default);
 // app.model(require('./models/picList').default);
 // 4. Router
 app.router(require('./router').default);

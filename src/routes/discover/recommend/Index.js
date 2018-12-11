@@ -29,7 +29,9 @@ class Index extends Component {
                     href="http://www.alipay.com"
                     style={{
                       display: "inline-block",
-                      width: "100%"
+                      width: "100%",
+                      borderRadius: '4px',
+                      overflow:'hidden'
                     }}
                   >
                     <img
@@ -99,7 +101,8 @@ class Index extends Component {
                     height: 'auto',
                     background:'#fff',
                     borderRadius: '4px',
-                    paddingBottom:'1px'
+                    paddingBottom:'1px',
+                    overflow:'hidden'
                   }}
                 >
                   <img

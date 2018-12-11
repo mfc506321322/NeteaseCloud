@@ -48,7 +48,7 @@ $baseline-px:37.5px;
     height: auto;
     overflow-x: hidden;
     padding: rem(15px) 0;
-    background: #aaa;
+    background: rgba(54,59,61,.8);
     h4{
         width: 100%;
         text-align: center;
@@ -60,6 +60,7 @@ $baseline-px:37.5px;
     :global(.am-wingblank-lg){
         a{
             span{
+                color: #363B3D;
                 font-size: rem(13px);
                 width: 100%;
                 padding: 0 rem(5px);

@@ -2,11 +2,12 @@ import { routerRedux } from 'dva/router';
 import {getToken, setToken} from '../utils/user';
 import {
   login,
-  searchVal
+  searchVal,
+  getUserInfo
 } from '../services/index';
 export default {
   namespace: "index",
-  state: { routePath: "/main/discover",searchData:[] },
+  state: { routePath: "/main/discover",searchData:[],userInfo:{}},
   subscriptions: {
     setup({ dispatch, history }) {
       return history.listen(({ pathname }) => {
@@ -45,6 +46,15 @@ export default {
         type: 'getSearchVal',
         payload: response.data.result.songs
       });
+    },
+    *getUserInfo(action, {call, put}){
+      // console.log('user action...', getToken());
+      let response = yield call(getUserInfo,getToken());
+      console.log('response.user...', response.data);
+      yield put({
+        type: 'getUserInfoData',
+        payload: response.data
+      });
     }
   },
   reducers: {
@@ -62,6 +72,10 @@ export default {
     getSearchVal(state, action){
       // console.log('action...', action);
       return {...state, searchData:[...action.payload]}
+    },
+    getUserInfoData(state, action){
+      // console.log('action...', action);
+      return {...state, userInfo:{...action.payload}}
     }
   }
 };
