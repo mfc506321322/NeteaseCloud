@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import {connect} from 'dva';
 import styles from './MusicPage.scss';
 import {formatTime} from '../utils/time';
+import {Carousel} from 'antd-mobile';
 import Lyric from '../components/lyric';
+import AudioCable from '../components/AudioCable';
 let storage = window.localStorage;
 @connect(
     state => {
@@ -62,7 +64,8 @@ class MusicPage extends Component {
         this.state = {
             progress:0,
             isPlay:true,
-            show:false
+            show:false,
+            shouLyric:false
         }
     }
     componentDidMount(){
@@ -158,6 +161,33 @@ class MusicPage extends Component {
         })
     }
 
+    //拖动唱片
+    /* discTouchStart = (e) => {
+        let touchY = e.touches[0].pageY;
+        console.log('Start...',touchY);
+        this.setState({
+            touchY
+        })
+    }
+    discTouchMove = (e) => {
+        // console.log('Move...',e.touches[0].pageY);
+        let {
+            touchY
+        } = this.state;
+        console.log('Move...',touchY);
+        let newTouchY = e.touches[0].pageY;
+        let newDisc = newTouchY - touchY;
+        console.log(newDisc)
+        this.setState({
+            discY: newDisc
+        })
+        // let DiscT = this.getDisc.offsetTop;
+        // let DiscH = this.getDisc.offsetHeight;
+        // let newDisc = touchY - DiscT;
+    }
+    discTouchEnd = () => {
+
+    } */
     switchPlay = (type) => {
         let songsDetailAll = JSON.parse(storage.getItem('songsDetailAll')) || this.props.songsDetailAll;
         let flag = songsDetailAll.some(item => {
@@ -174,7 +204,8 @@ class MusicPage extends Component {
         let {
             isPlay,
             progress,
-            show
+            show,
+            shouLyric
         } = this.state;
         let {
             musicDetailData,
@@ -233,18 +264,37 @@ class MusicPage extends Component {
                             <h4>{v.name}</h4>
                             <div className={styles.basis}></div>
                         </header>
-                        <div className={styles.main}>
-                            <div className={styles.arc}>
-                                <div className={styles.img}>
-                                    <div className={styles.disc}>
-                                        <img 
-                                        src={v.al.picUrl} 
-                                        className={isPlay ? '' : styles.pause}
-                                        alt=""/>
+                        <div className={styles.main}
+                        onClick={()=>{
+                            this.setState({
+                                shouLyric:!shouLyric
+                            })
+                        }}
+                        >
+                            <Carousel
+                                autoplay={false}
+                                infinite
+                                style={{
+                                    width:'100%',
+                                    height:'100%'
+                                }}
+                                className={styles.mainBox}
+                            >
+                                <React.Fragment>
+                                    <div className={shouLyric ? styles.arcHide  : styles.arc}>
+                                        <div className={styles.img}>
+                                            <div className={styles.disc}>
+                                                <img 
+                                                src={v.al.picUrl} 
+                                                className={isPlay ? '' : styles.pause}
+                                                alt=""/>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <Lyric lyric={lyric} currentTime={this.getTime && this.getTime.currentTime}></Lyric>
+                                    <Lyric lyric={lyric} show={shouLyric} currentTime={this.getTime && this.getTime.currentTime}></Lyric>
+                                </React.Fragment>
+                                <AudioCable audio={this.getTime}/>
+                            </Carousel>
                         </div>
                         <div className={styles.footer}>
                             <div className={styles.time}>
@@ -259,6 +309,9 @@ class MusicPage extends Component {
                                         <span style={{
                                             width:`${progress}%`
                                         }}></span>
+                                        <em style={{
+                                            left:`${progress}%`
+                                        }}></em>
                                     </div>
                                 </div>
                                 <span className={styles.allTime}>{this.allTime}</span>
@@ -294,6 +347,7 @@ class MusicPage extends Component {
                             </div>
                         </div>
                     {this.props.songUrl?<audio 
+                    crossOrigin="anonymous"
                     src={this.props.songUrl} 
                     autoPlay
                     ref={ref => this.getTime = ref} 

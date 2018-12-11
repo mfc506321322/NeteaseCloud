@@ -6,10 +6,52 @@ $baseline-px:37.5px;
 }
 .lyric{
     font-size: rem(16px);
-    // margin-top: rem(40px);
+    margin-top: rem(25px);
     color: #fff;
     :global(.slider-frame){
-        padding: rem(66px) 0 !important;
+        padding: rem(33px) 0 rem(66px) 0!important;
+        li{
+            height: rem(33px) !important;
+            line-height: rem(33px) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            p{
+                &.active{
+                    font-size: rem(22px) !important;
+                    position: relative;
+                    &::before{
+                        content: "";
+                        background: red;
+                        position: absolute;
+                        top: 50%;
+                        left: rem(-160px);
+                        width: rem(150px);
+                        height: 2px;
+                        margin-top: -1px;
+                    }
+                    &::after{
+                        content: "";
+                        background: red;
+                        position: absolute;
+                        top: 50%;
+                        right: rem(-160px);
+                        width: rem(150px);
+                        height: 2px;
+                        margin-top: -1px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.showLyric{
+    font-size: rem(16px);
+    color: #fff;
+    :global(.slider-frame){
+        padding: rem(165px) 0 rem(198px) 0 !important;
         li{
             height: rem(33px) !important;
             line-height: rem(33px) !important;

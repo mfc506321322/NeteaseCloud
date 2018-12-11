@@ -1,0 +1,11 @@
+$baseline-px:37.5px;
+@function rem($px-values) {
+    $baseline-rem: $baseline-px / 1rem * 1;
+    $px-values: $px-values / $baseline-rem;
+    @return $px-values;
+}
+.canvas{
+    position: relative;
+    z-index: 100;
+    width: 80%;
+}

@@ -122,43 +122,66 @@ $baseline-px:37.5px;
     align-items: center;
     flex-direction: column;
     background: rgba(0,0,0,.2);
-    .arc{
-        width: rem(295px);
-        height: rem(295px);
+}
+.mainBox{
+    &>:global(.slider-frame){
+        width: 100% !important;
+        height: 100% !important;
+        &>:global(.slider-list){
+            width: 100% !important;
+            height: 100% !important;
+            &>:global(.slider-slide){
+                width: 100% !important;
+                height: 100% !important;
+                display: flex!important;
+                justify-content: center!important;
+                align-items: center!important;
+                flex-direction: column!important;
+            }
+        }
+    }
+}
+.arc{
+    width: rem(295px);
+    height: rem(295px);
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255,255,255,.1);
+    position: relative;
+    .img{
+        width: rem(280px);
+        height: rem(280px);
         border-radius: 50%;
         overflow: hidden;
         display: flex;
         justify-content: center;
         align-items: center;
-        background: rgba(255,255,255,.1);
-        .img{
-            width: rem(280px);
-            height: rem(280px);
+        background: #1A1A1A;
+        .disc{
+            width: rem(200px);
+            height: rem(200px);
             border-radius: 50%;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #1A1A1A;
-            .disc{
-                width: rem(200px);
-                height: rem(200px);
-                border-radius: 50%;
-                overflow: hidden;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                img{
-                    width: auto;
-                    height: 100%;
-                    animation: rotate 15s linear infinite;
-                    &.pause{
-                        animation-play-state: paused;
-                    }
+            img{
+                width: auto;
+                height: 100%;
+                animation: rotate 15s linear infinite;
+                &.pause{
+                    animation-play-state: paused;
                 }
             }
         }
     }
+}
+.arcHide{
+    composes: arc;
+    display: none;
 }
 .footer{
     position: relative;
@@ -178,10 +201,24 @@ $baseline-px:37.5px;
                 width: 100%;
                 height: 3px;
                 background: #6D6D6D;
+                position: relative;
                 &>span{
                     height: 100%;
                     background: #AC4441;
                     display: block;
+                }
+                &>em{
+                    position: absolute;
+                    top: rem(-5px);
+                    left: 0;
+                    width: rem(13px);
+                    height: rem(13px);
+                    z-index: 97;
+                    background: red;
+                    border: 5px solid #fff;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    margin-left: rem(-6.5px);
                 }
             }
         }

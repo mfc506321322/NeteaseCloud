@@ -81,6 +81,9 @@ class Lyric extends Component {
         }
     }
     render() {
+        let {
+            show
+        } = this.props;
         return (
             <Carousel
             selectedIndex={this.state.current}
@@ -88,8 +91,7 @@ class Lyric extends Component {
             vertical={true}
             dots={false}
             autoplayInterval={500}
-            infinite
-            className={styles.lyric}
+            className={show ? styles.showLyric : styles.lyric}
             >{
                 this.state.texts.map((item, index)=>{
                     return <p key={index} className={this.state.current === index ? styles.active : ''}>{item.text}</p>
