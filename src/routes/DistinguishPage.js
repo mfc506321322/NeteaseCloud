@@ -14,6 +14,7 @@ class DistinguishPage extends Component {
     super();
     this.state = {
       rightAnser: [],
+      distiguishList:[],
       answers: new Array(10), // 用户选择的答案数组
       answerList: [], // 备选答案
       current: 0, // 当前播放歌曲
@@ -28,8 +29,10 @@ class DistinguishPage extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
+    let newProps = props.distiguishList || JSON.parse(window.localStorage.getItem('distiguishList'));
     return {
-      rightAnser: props.distiguishList.map(item => item.name.name)
+      rightAnser: newProps.map(item => item.name.name),
+      distiguishList:newProps
     };
   }
 
@@ -141,8 +144,8 @@ class DistinguishPage extends Component {
   }
 
   render() {
-    return (
-      <div className={styles.distinguish}>
+    return <React.Fragment>
+      {this.state.distiguishList && <div className={styles.distinguish}>
         <div className={styles.header}>
           <a href="javascript:history.back();">
             <img src="./icon/back.png" alt="" />
@@ -177,7 +180,7 @@ class DistinguishPage extends Component {
           {/* 音频播放器 */}
           <audio
             crossOrigin="anonymous"
-            src={this.props.distiguishList[this.state.current].url}
+            src={this.state.distiguishList[this.state.current].url}
             ref="audio"
             onTimeUpdate={() => this.timeUpdate()}
             onLoadedMetadata={() => this.startPlay()}
@@ -197,8 +200,8 @@ class DistinguishPage extends Component {
             })}
           </ul>
         </div>
-      </div>
-    );
+      </div>}
+    </React.Fragment>
   }
 }
 
