@@ -52,25 +52,25 @@ class Index extends Component {
         <div className={styles.menu}>
           <NavLink to="">
             <div className={styles.imgbox}>
-              <img src="/img/icon/fm.png" alt="" />
+              <img src="./icon/fm.png" alt="" />
             </div>
             <span>私人FM</span>
           </NavLink>
           <NavLink to="">
             <div className={styles.imgbox}>
-              <img src="/img/icon/calendar.png" alt="" />
+              <img src="./icon/calendar.png" alt="" />
             </div>
             <span>每日推荐</span>
           </NavLink>
           <NavLink to="">
             <div className={styles.imgbox}>
-              <img src="/img/icon/playlist.png" alt="" />
+              <img src="./icon/playlist.png" alt="" />
             </div>
             <span>歌单</span>
           </NavLink>
           <NavLink to="">
             <div className={styles.imgbox}>
-              <img src="/img/icon/list.png" alt="" />
+              <img src="./icon/list.png" alt="" />
             </div>
             <span>排行榜</span>
           </NavLink>

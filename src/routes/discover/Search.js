@@ -22,6 +22,12 @@ import {connect} from 'dva';
                     type:'play/playAll',
                     payload
                 })
+            },
+            distinguishSong:(payload) => {
+                dispatch({
+                    type:'play/distinguishSong',
+                    payload
+                })
             }
         }
     }
@@ -48,6 +54,10 @@ class Search extends Component {
         let arr = searchData.map(item => item.id);
         this.props.playAll(arr);
     }
+    // 听歌识曲
+    distinguishSong = () => {
+        this.props.distinguishSong(this.props.searchData.map(item=>item.id));
+    }
     render() {
         let {
             val
@@ -73,8 +83,8 @@ class Search extends Component {
                         {
                             searchData.length > 0 && <div className={styles.li}>
                                 <div className={styles.getAll}>
-                                    <h3
-                                    onClick={this.getAll}>播放全部</h3>
+                                    <h3 onClick={this.getAll}>播放全部</h3>
+                                    <h3 onClick={this.distinguishSong}>识曲游戏</h3>
                                 </div>
                             </div>
                         }

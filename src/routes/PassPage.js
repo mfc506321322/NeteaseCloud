@@ -43,14 +43,14 @@ class PassPage extends Component  {
       <div className={styles.wrap}>
         <header className={styles.header}>
           <a href="javascript:history.back();">
-            <img src="/img/icon/back.png" alt=""/>
+            <img src="./icon/back.png" alt=""/>
           </a>
           <h4>手机号登录</h4>
           <div className={styles.basis}></div>
         </header>
         <div className={styles.main}>
           <label>
-            <img src="/img/icon/tel.png" alt=""/>
+            <img src="./icon/tel.png" alt=""/>
             <input type="text" value={user} maxLength={11} placeholder='手机号' onChange={(e) => {
               this.setState({
                 user:e.target.value
@@ -58,7 +58,7 @@ class PassPage extends Component  {
             }}/>
           </label>
           <label>
-            <img src="/img/icon/pwd.png" alt=""/>
+            <img src="./icon/pwd.png" alt=""/>
             <input type="password" value={pwd} placeholder='密码' onChange={(e) => {
               this.setState({
                 pwd:e.target.value

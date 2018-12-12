@@ -2,7 +2,7 @@ import request from '../utils/request';
 export * from './discover.js';
 export * from './station.js';
 
-const host = /localhost/.test(window.location.host)?'http://123.206.55.50:14000':'';
+const host = /localhost/.test(window.location.host)?'http://123.206.55.50:14000':'http://123.206.55.50:14000';
 // 登陆接口
 export function login(user,pwd){
   console.log(user,pwd);

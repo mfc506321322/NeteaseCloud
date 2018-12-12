@@ -5,6 +5,7 @@ import LoginPage from '../routes/LoginPage';
 import MainPage from '../routes/MainPage';
 import PassPage from '../routes/PassPage';
 import MusicPage from '../routes/MusicPage';
+import DistinguishPage from '../routes/DistinguishPage';
 
 //引入二级路由
 import AccountPage from '../routes/account/Index';
@@ -28,6 +29,10 @@ export default {
     {
       path:'/passPage',
       component:PassPage
+    },
+    {
+      path:'/distinguish',
+      component:DistinguishPage
     },
     {
       path:'/music/:id?',

@@ -13,23 +13,23 @@ class MainPage extends Component {
                 </div>
                 <footer>
                     <NavLink to="/main/discover">
-                        <img src={path === "/main/discover" ? '/img/icon/find.png' : '/img/icon/find-n.png'} alt=""/>
+                        <img src={path === "/main/discover" ? './icon/find.png' : './icon/find-n.png'} alt=""/>
                         <span>发现</span>
                     </NavLink>
                     <NavLink to="/main/video">
-                        <img src={path === "/main/video" ? '/img/icon/video.png' : '/img/icon/video-n.png'} alt=""/>
+                        <img src={path === "/main/video" ? './icon/video.png' : './icon/video-n.png'} alt=""/>
                         <span>视频</span>
                     </NavLink>
                     <NavLink to="/main/my">
-                        <img src={path === "/main/my" ? '/img/icon/my.png' : '/img/icon/my-n.png'} alt=""/>
+                        <img src={path === "/main/my" ? './icon/my.png' : './icon/my-n.png'} alt=""/>
                         <span>我的</span>
                     </NavLink>
                     <NavLink to="/main/friend">
-                        <img src={path === "/main/friend" ? '/img/icon/friend.png' : '/img/icon/friend-n.png'} alt=""/>
+                        <img src={path === "/main/friend" ? './icon/friend.png' : './icon/friend-n.png'} alt=""/>
                         <span>朋友</span>
                     </NavLink>
                     <NavLink to="/main/account">
-                        <img src={path === "/main/account" ? '/img/icon/user.png' : '/img/icon/user-n.png'} alt=""/>
+                        <img src={path === "/main/account" ? './icon/user.png' : './icon/user-n.png'} alt=""/>
                         <span>账号</span>
                     </NavLink>
                 </footer>

@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "dva";
+import styles from './Index.scss';
 class Index extends React.PureComponent {
   componentWillMount() {
     console.log(this.props.match.path);
@@ -7,7 +8,7 @@ class Index extends React.PureComponent {
   }
   render() {
     console.log("props..", this.props);
-    return <h1>{this.props.match.path}</h1>;
+    return <h1 className={styles.point}>当前页面正在完善中...</h1>;
   }
 }
 const mapStateToProps = state => {

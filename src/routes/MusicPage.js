@@ -220,7 +220,7 @@ class MusicPage extends Component {
                     <header className={styles.listHeader}>
                         <div className={styles.basis}></div>
                         <h4>歌单</h4>
-                        <img src="/img/icon/shut.png" alt=""
+                        <img src="./icon/shut.png" alt=""
                         onClick={() => {
                             this.setState({
                                 show:false
@@ -259,7 +259,7 @@ class MusicPage extends Component {
                         }}></div>
                         <header className={styles.header}>
                             <a href="javascript:history.back();">
-                                <img src="/img/icon/back.png" alt=""/>
+                                <img src="./icon/back.png" alt=""/>
                             </a>
                             <h4>{v.name}</h4>
                             <div className={styles.basis}></div>
@@ -319,24 +319,24 @@ class MusicPage extends Component {
                             <div className={styles.musicBtn}>
                                 <div className={styles.basis}></div>
                                 <img 
-                                src="/img/icon/go_back.png" 
+                                src="./icon/go_back.png" 
                                 alt=""
                                 onClick={() => {
                                     this.switchPlay('prev')
                                 }}/>
                                 <img 
-                                src={isPlay ? "/img/icon/pause.png" : "/img/icon/play.png"} 
+                                src={isPlay ? "./icon/pause.png" : "./icon/play.png"} 
                                 className={styles.play} 
                                 alt=""
                                 onClick={this.changePlay}/>
                                 <img 
-                                src="/img/icon/go.png" 
+                                src="./icon/go.png" 
                                 alt=""
                                 onClick={() => {
                                     this.switchPlay('next')
                                 }}/>
                                 <img 
-                                src="/img/icon/musicList.png" 
+                                src="./icon/musicList.png" 
                                 alt=""
                                 onClick={() => {
                                     this.setState({

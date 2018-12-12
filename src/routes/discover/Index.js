@@ -11,11 +11,11 @@ class Index extends React.PureComponent {
   render() {
     return <div className={styles.discover}>
       <header className={styles.header}>
-        <img src="/img/icon/listen-n.png" alt=""/>
+        <img src="./icon/listen-n.png" alt=""/>
         <label>
           <NavLink to='/main/search'>猜你喜欢 浮生</NavLink>
         </label>
-        <img src="/img/icon/audio-n.png" alt=""/>
+        <img src="./icon/audio-n.png" alt=""/>
       </header>
       <div className={styles.content}>
         <div className={styles.topTab}>

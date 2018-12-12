@@ -50,25 +50,25 @@ class Index extends Component {
         <div className={styles.menu}>
           <NavLink to="">
             <div className={styles.imgbox}>
-              <img src="/img/icon/class.png" alt="" />
+              <img src="./icon/class.png" alt="" />
             </div>
             <span>电台分类</span>
           </NavLink>
           <NavLink to="">
             <div className={styles.imgbox}>
-              <img src="/img/icon/rank.png" alt="" />
+              <img src="./icon/rank.png" alt="" />
             </div>
             <span>电台排行</span>
           </NavLink>
           <NavLink to="">
             <div className={styles.imgbox}>
-              <img src="/img/icon/sfm.png" alt="" />
+              <img src="./icon/sfm.png" alt="" />
             </div>
             <span>DI电音</span>
           </NavLink>
           <NavLink to="">
             <div className={styles.imgbox}>
-              <img src="/img/icon/ice.png" alt="" />
+              <img src="./icon/ice.png" alt="" />
             </div>
             <span>小冰电台</span>
           </NavLink>

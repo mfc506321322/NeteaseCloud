@@ -17,7 +17,7 @@ class Index extends React.Component {
           <h1>
             账号
           </h1>
-          <img src="/img/icon/audio-n.png" alt=""/>
+          <img src="./icon/audio-n.png" alt=""/>
         </header>
         <div className={styles.main}>
           <div className={styles.top}>
@@ -45,7 +45,7 @@ class Index extends React.Component {
                 <span>{v.follows}</span>
               </li>
               <li>
-                <img src="/img/icon/user.png" alt=""/>
+                <img src="./icon/user.png" alt=""/>
                 <h6>我的资料</h6>
               </li>
             </ol>
@@ -53,45 +53,45 @@ class Index extends React.Component {
           <div className={styles.content}>
             <div className={styles.cli}>
               <div className={styles.left}>
-                <img src="/img/icon/message.png" alt=""/>
+                <img src="./icon/message.png" alt=""/>
                 <span>我的消息</span>
               </div>
-              <img src="/img/icon/goto.png" alt=""/>
+              <img src="./icon/goto.png" alt=""/>
             </div>
             <div className={styles.cli}>
               <div className={styles.left}>
-                <img src="/img/icon/vipcenter.png" alt=""/>
+                <img src="./icon/vipcenter.png" alt=""/>
                 <span>会员中心</span>
               </div>
-              <img src="/img/icon/goto.png" alt=""/>
+              <img src="./icon/goto.png" alt=""/>
             </div>
             <div className={styles.cli}>
               <div className={styles.left}>
-                <img src="/img/icon/shopcar.png" alt=""/>
+                <img src="./icon/shopcar.png" alt=""/>
                 <span>商城</span>
               </div>
-              <img src="/img/icon/goto.png" alt=""/>
+              <img src="./icon/goto.png" alt=""/>
             </div>
             <div className={styles.cli}>
               <div className={styles.left}>
-                <img src="/img/icon/game.png" alt=""/>
+                <img src="./icon/game.png" alt=""/>
                 <span>游戏推荐</span>
               </div>
-              <img src="/img/icon/goto.png" alt=""/>
+              <img src="./icon/goto.png" alt=""/>
             </div>
             <div className={styles.cli}>
               <div className={styles.left}>
-                <img src="/img/icon/yinle.png" alt=""/>
+                <img src="./icon/yinle.png" alt=""/>
                 <span>在线听歌免流量</span>
               </div>
-              <img src="/img/icon/goto.png" alt=""/>
+              <img src="./icon/goto.png" alt=""/>
             </div>
             <div className={styles.cli}>
               <div className={styles.left}>
-                <img src="/img/icon/set.png" alt=""/>
+                <img src="./icon/set.png" alt=""/>
                 <span>设置</span>
               </div>
-              <img src="/img/icon/goto.png" alt=""/>
+              <img src="./icon/goto.png" alt=""/>
             </div>
           </div>
         </div>

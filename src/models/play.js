@@ -68,6 +68,46 @@ export default {
         type: 'getLyricData',
         payload: res.data.lrc.lyric
       });
+    },
+    *distinguishSong({payload}, {call, put}){
+      console.log('payload...', payload);
+      // 随机选取十首歌
+      let songList = [], ids = [];
+      while(true){
+        let id = Math.floor(Math.random()*payload.length);
+        if (ids.indexOf(payload[id]) == -1){
+          ids.push(payload[id]);
+          if (ids.length == 10){
+            break;
+          }
+        }
+      }
+      console.log('ids...', ids);
+      // 获取歌曲可播放文件
+      let responses = yield call(playSongsAll, ids);
+      // 获取歌曲详情
+      let details = yield call(playDetailAll, ids);
+      console.log('urls response...', responses);
+      console.log('urls detail...', details);
+      responses = responses.data.data;
+      details = details.data.songs;
+      details.forEach(item=>{
+        songList.push({
+          name: item,
+          url: responses.filter(value=>value.id==item.id)[0].url
+        })
+      })
+      console.log('songList...', songList);
+      yield put({
+        type: 'updateState',
+        payload: {
+          distiguishList: songList
+        }
+      })
+      storage.setItem('distiguishList', JSON.stringify(songList));
+      yield put(routerRedux.push({
+        pathname: `/distinguish`,
+      }))
     }
   },
   reducers: {
@@ -132,6 +172,10 @@ export default {
     },
     getLyricData(state,action){
       return {...state, lyric:action.payload}
+    },
+    updateState(state, action){
+      console.log('action...', action);
+      return {...state, ...action.payload}
     }
   }
 };
