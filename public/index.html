@@ -5,8 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dva Demo</title>
   <link rel="stylesheet" href="./index.css" />
+  <script src="https://browser.sentry-cdn.com/4.4.1/bundle.min.js" crossorigin="anonymous"></script>
   <script src="//cdn.jsdelivr.net/npm/eruda"></script>
-  <script>eruda.init();</script>
+  <script>
+    Sentry.init({ dsn: 'https://8715469b8b2c4a3aa62cd6e9bb5fb569@sentry.io/1352767' });
+    eruda.init();
+  </script>
   <script>
     var _hmt = _hmt || [];
     window._hmt = _hmt;
