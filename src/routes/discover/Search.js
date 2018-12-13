@@ -45,6 +45,7 @@ class Search extends Component {
         } = this.state;
         if(val.trim() !== ''){
             this.props.searchVal(val);
+            window._hmt.push(['_trackEvent', '网易云音乐', 'input框失焦', '搜索歌曲']);
         }
     }
     getAll = () => {
