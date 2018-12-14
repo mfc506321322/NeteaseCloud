@@ -45,7 +45,7 @@ class Search extends Component {
         } = this.state;
         if(val.trim() !== ''){
             this.props.searchVal(val);
-            window._hmt.push(['_trackEvent', '网易云音乐', 'input框失焦', '搜索歌曲']);
+            window._hmt.push(['_trackEvent', '网易云音乐搜索页', 'input框失焦', '搜索歌曲']);
         }
     }
     getAll = () => {
@@ -54,10 +54,12 @@ class Search extends Component {
         } = this.props;
         let arr = searchData.map(item => item.id);
         this.props.playAll(arr);
+        window._hmt.push(['_trackEvent', '网易云音乐搜索页', '点击事件', '播放全部歌曲']);
     }
     // 听歌识曲
     distinguishSong = () => {
         this.props.distinguishSong(this.props.searchData.map(item=>item.id));
+        window._hmt.push(['_trackEvent', '网易云音乐搜索页', '点击事件', '听歌识曲']);
     }
     render() {
         let {
@@ -92,7 +94,11 @@ class Search extends Component {
                         {
                             searchData.length > 0 && searchData.map((v,i) => {
                                 return <div className={styles.li} key={i}>
-                                    <NavLink to={`/music/${v.id}`}>
+                                    <NavLink 
+                                    to={`/music/${v.id}`}
+                                    onClick={() => {
+                                        window._hmt.push(['_trackEvent', '网易云音乐搜索页', '点击事件', '点击播放歌曲']);
+                                    }}>
                                         <h3>{v.name}</h3>
                                         <span>{v.artists[0].name} - {v.album.name}</span>
                                     </NavLink>

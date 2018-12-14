@@ -13,7 +13,9 @@ class Index extends React.PureComponent {
       <header className={styles.header}>
         <img src="./icon/listen-n.png" alt=""/>
         <label>
-          <NavLink to='/main/search'>猜你喜欢 浮生</NavLink>
+          <NavLink to='/main/search' onClick={() => {
+            window._hmt.push(['_trackEvent', '网易云音乐发现页', '点击事件', '进入搜索页']);
+          }}>猜你喜欢 浮生</NavLink>
         </label>
         <img src="./icon/audio-n.png" alt=""/>
       </header>

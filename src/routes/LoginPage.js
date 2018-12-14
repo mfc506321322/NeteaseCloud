@@ -6,7 +6,9 @@ const IndexPage = (props) => {
     <div className={styles.wrap}>
       <img src='./icon/logo.png' alt=""/>
       <div className={styles.btn}>
-        <NavLink to='/passPage'>手机号登录</NavLink>
+        <NavLink to='/passPage' onClick={() => {
+            window._hmt.push(['_trackEvent', '网易云音乐登录页', '点击事件', '进入账号页']);
+          }}>手机号登录</NavLink>
         <NavLink to='/passPage'>注册</NavLink>
       </div>
     </div>

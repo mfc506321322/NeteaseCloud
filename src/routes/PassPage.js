@@ -33,6 +33,7 @@ class PassPage extends Component  {
     } = this.state;
     console.log(user,pwd);
     this.props.loginIn(user,pwd);
+    window._hmt.push(['_trackEvent', '网易云音乐账号页', '点击事件', '登录账号']);
   }
   render(){
     let {
