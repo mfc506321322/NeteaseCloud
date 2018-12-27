@@ -109,6 +109,7 @@ class DistinguishPage extends Component {
 
   // 控制播放暂停
   play() {
+    console.log('this.state.distiguishList...',this.state.distiguishList[this.state.current]);
     this.setState(
       {
         isPlay: !this.state.isPlay
@@ -146,6 +147,12 @@ class DistinguishPage extends Component {
   render() {
     return <React.Fragment>
       {this.state.distiguishList && <div className={styles.distinguish}>
+        <div className={styles.fuzzy} style={{
+          backgroundImage:`url(${this.state.distiguishList[this.state.current].name.al.picUrl})`,
+          backgroundPosition:'center center',
+          backgroundSize:'cover',
+          filter: 'blur(10px)'
+        }}></div>
         <div className={styles.header}>
           <a href="javascript:history.back();">
             <img src="./icon/back.png" alt="" />
@@ -164,19 +171,21 @@ class DistinguishPage extends Component {
             })}
           </ul>
           {/* 进度条 */}
-          <div>
-            <span>{"00." + this.currentTime}</span>
+          <div className={styles.progressbox}>
+            <span>{"00:" + this.currentTime}</span>
             <div className={styles.progress}>
               <p ref="progress">
                 <span style={{ width: this.state.progress + "%" }} />
               </p>
             </div>
-            <span>00.10</span>
+            <span>00:10</span>
           </div>
-          <button onClick={this.play.bind(this)}>
-            {this.state.isPlay ? "暂停" : "播放"}
-          </button>
-          <span>{`${this.state.current + 1}/10`}</span>
+          <div className={styles.playbox}>
+            <span>{`${this.state.current + 1}/10`}</span>
+            <button onClick={this.play.bind(this)}>
+              {this.state.isPlay ? "暂停" : "播放"}
+            </button>
+          </div>
           {/* 音频播放器 */}
           <audio
             crossOrigin="anonymous"
